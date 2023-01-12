@@ -1,0 +1,28 @@
+# Binary sensors
+binary_sensor:
+  - platform: template
+    sensors:
+      wasmachine_status:
+        friendly_name: "Wasmachine Status"
+        delay_off:
+          minutes: 2
+        value_template: >
+          {{ states('sensor.shelly1pm_wasmachine_power')|float > 5.0 }}
+
+  - platform: template
+    sensors:
+      droger_status:
+        friendly_name: "Droger Status"
+        delay_off:
+          minutes: 2
+        value_template: >
+          {{ states('sensor.shelly1pm_droger_power')|float > 120.0 }}
+
+  - platform: template
+    sensors:
+      vaatwasser_status:
+        friendly_name: "Vaatwasser Status"
+        delay_off:
+          minutes: 3
+        value_template: >
+          {{ states('sensor.shellyplugs_vaatwasser_power')|float > 3.0 }}
